@@ -6,3 +6,5 @@
 doc/
 target/
 todo
+.cache-main
+.cache-tests
