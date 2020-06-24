@@ -1,0 +1,6 @@
+hello scala
+hello spark
+hello cdh
+hello hive
+hello fink
+hello scala

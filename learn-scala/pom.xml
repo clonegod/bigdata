@@ -1,0 +1,97 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>clonegod.learn</groupId>
+  <artifactId>learn-scala</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>learn-scala</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <java.version>1.8</java.version>
+    <maven.compiler.source>${java.version}</maven.compiler.source>
+    <maven.compiler.target>${java.version}</maven.compiler.target>
+    
+    <spark.version>2.3.1</spark.version>
+    <scala.version>2.11.7</scala.version>
+  </properties>
+
+  <dependencies>
+  	
+  	<!-- spark core -->
+  	<dependency>
+	    <groupId>org.apache.spark</groupId>
+	    <artifactId>spark-core_2.11</artifactId>
+	    <version>${spark.version}</version>
+	</dependency>
+	
+	<!-- spark SQL -->
+	<dependency>
+	    <groupId>org.apache.spark</groupId>
+	    <artifactId>spark-sql_2.11</artifactId>
+	    <version>${spark.version}</version>
+	</dependency>
+	
+	<!-- spark SQL on hive -->
+	<dependency>
+	    <groupId>org.apache.spark</groupId>
+	    <artifactId>spark-hive_2.11</artifactId>
+	    <version>${spark.version}</version>
+	</dependency>
+	
+	
+	<dependency>
+	    <groupId>org.apache.spark</groupId>
+	    <artifactId>spark-streaming_2.11</artifactId>
+	    <version>${spark.version}</version>
+	</dependency>
+	
+	<!-- scala -->  	
+  	<dependency>
+	    <groupId>org.scala-lang</groupId>
+	    <artifactId>scala-library</artifactId>
+	    <version>${scala.version}</version>
+	</dependency>
+  	<dependency>
+	    <groupId>org.scala-lang</groupId>
+	    <artifactId>scala-reflect</artifactId>
+	    <version>${scala.version}</version>
+	</dependency>
+	<dependency>
+	    <groupId>org.scala-lang</groupId>
+	    <artifactId>scala-compiler</artifactId>
+	    <version>${scala.version}</version>
+	</dependency>
+  	
+  	
+  	
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.12</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+  
+  <build>
+  	<plugins>
+  		<plugin>
+  			<groupId>org.scala-tools</groupId>
+  			<artifactId>maven-scala-plugin</artifactId>
+  			<version>2.15.2</version>
+  			<executions>
+  				<execution>
+  					 <id>scala-compile</id>
+  					<goals>
+  						<goal>compile</goal>
+  					</goals>
+  				</execution>
+  			</executions>
+  		</plugin>
+  	</plugins>
+  </build>
+</project>
