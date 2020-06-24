@@ -8,69 +8,69 @@ package clonegod.learn
  * 5、在同一个scala文件中，class类名和object名称一样时，这个类叫做该同名对象的伴生类，这个对象叫做该同名类的伴生对象，它们之间可以互相访问彼此的私有属性
  */
 object Person {
-  
-  def apply(version: String):Unit = {
+
+  def apply(version: String): Unit = {
     println("Person object version=" + version)
   }
-  
+
   def main(args: Array[String]): Unit = {
     // object 传参将调用apply方法
     Person("V1.0")
-    
+
     // 常量
     val PI = 3.14
     println("PI=" + PI)
-    
+
     // 构造函数1
     var p1 = new Person("alice", 20)
-    
+
     // 构造函数2
     var p2 = new Person("bob", 30, "男", new Address("China", "beijing"))
-   
+
     sayHello(p1)
-    
+
     sayHello(p2)
-    
+
     // 对象可以访问伴生类的私有属性
     println("version=" + p1.version)
   }
-  
-  def sayHello(person: Person) : Unit = {
+
+  def sayHello(person: Person): Unit = {
     println("Hello: " + person.name)
     person.desc;
   }
-  
+
 }
 
-class Person(xname:String, xage: Int) {
+class Person(xname: String, xage: Int) {
   var name = xname
   var age = xage
   var sex = "Male"
-  var addr = new Address("","")
+  var addr = new Address("", "")
   private val version = "1.0"
-  
+
   // 重载构造函数
-  def this(_name:String, _age:Int, _sex:String, _addr:Address) {
+  def this(_name: String, _age: Int, _sex: String, _addr: Address) {
     this(_name, _age)
     this.sex = _sex;
     this.addr = _addr
   }
-  
+
   // 方法没有参数，可以省略后面的括号
-  def desc:Unit = {
+  def desc: Unit = {
     println("name=%s,age=%s,sex=%s,addr=%s".format(this.name, this.age, this.sex, this.addr))
   }
-  
+
 }
 
 // case 关键字修身class，会自动生成equals, toString等方法
 case class Address(_country: String, _city: String) {
   val country = _country
   val city = _city
-  
+
   // 重写父类方法
-//  override def toString:String = {
-//    return this.country + ": " + this.city;
-//  }
-  
+  //  override def toString:String = {
+  //    return this.country + ": " + this.city;
+  //  }
+
 }

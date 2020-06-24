@@ -8,13 +8,13 @@ object Test04_Array {
     val arr1 = Array[String]("hello", "world");
     println(arr1.length)
     arr1.foreach(println)
-    
+
     // 可变
     var arr2 = new ArrayBuffer[String]()
     arr2.append("hello", "scala")
     println(arr2.length)
     arr2.foreach(println)
-    
-    
+
+
   }
 }
