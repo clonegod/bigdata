@@ -72,5 +72,9 @@ examples/jars/spark-examples_2.11-2.3.4.jar 10
 
 
 executor-memory : 给每个执行器分配多大的运行内存
-total-executor-cores : 所有Worker节点一共最多可以使用的core数
+total-executor-cores : 整个app一共最多可以使用的core数（所有Worker节点？）
+
+提交任务的时候可以指定多个master，防止某个master连接不上：
+--master spark://master1:7077,master2:7077
+
 ```
