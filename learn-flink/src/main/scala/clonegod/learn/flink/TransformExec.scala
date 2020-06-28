@@ -23,7 +23,10 @@ import org.apache.flink.streaming.api.scala._
  * 1、keyBy是什么
  * 基于key的hash code重分区
  * 同一个key只能在一个分区里处理，一个分区内可以存在不同key的数据
- * keyBy之后的所有操作，针对的作用域都只是当前的key
+ * keyBy之后得到的keyedStream上的所有操作，其作用域都只针对当前的key。
+ *
+ * 分区算法：
+ *  KeyGroupStreamPartitioner.selectChannel
  *
  * 2、滚动聚合操作是什么
  * DataStream没有聚合操作，目前所有聚合操作都是基于KeyedStream来进行的。
@@ -32,7 +35,7 @@ import org.apache.flink.streaming.api.scala._
  * 3、多流转换算子是什么
  * split-select, connect-map/flatmap
  * 它们都是成对进行使用的
- * 先转换为 SplitStream/ConnectedStream, 然后再通过select/comap操作就转换回DataStream
+ * 先转换为 SplitStream/ConnectedStream, 然后再通过select/coMap操作就转换回DataStream
  * 所谓coMap,就是基于ConnectedStream的map方法，需要同时提供两个转换函数，这两个函数就叫做coMapFunction
  *
  * 4、富函数
@@ -111,7 +114,7 @@ class MyKeySelector extends KeySelector[SensorReading, String] {
 }
 
 case class MySensorReducer() extends ReduceFunction[SensorReading] {
-  // 返回最新的时间戳和最大的温度值
+  // 返回最新的时间戳和最大的温度值(reduce：对前后两个值进行某种计算)
   override def reduce(cur: SensorReading, next: SensorReading): SensorReading = {
     SensorReading(
       cur.id,

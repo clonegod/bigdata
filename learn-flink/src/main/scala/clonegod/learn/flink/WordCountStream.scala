@@ -32,8 +32,8 @@ object WordCountStream {
       .flatMap(_.split("\\s+"))
       .filter(_.nonEmpty)
       .map( (_,1) )
-      .keyBy(0)
-      .sum(1)
+      .keyBy(0) // 按元组的第一个元素分组
+      .sum(1) // 对元组的第二个元素进行sum
 
     // 输出结果设置为1个线程执行，就不会输出线程号了
     resultDataStream.print().setParallelism(1)

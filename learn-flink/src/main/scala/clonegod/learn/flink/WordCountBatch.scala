@@ -13,7 +13,7 @@ object WordCountBatch {
 
     // 从本地文件中读取数据
     // 可以指定目录或具体文件
-    val inputDataSet: DataSet[String] = env.readTextFile("/Users/huangqihang/workspace_bigdata/learn-flink/src/main/resources")
+    val inputDataSet: DataSet[String] = env.readTextFile("/Users/huangqihang/workspace_bigdata/learn-flink/src/main/resources/words/")
 
     // 基于dataset做转换，按空格切分单词，再按word作为key做分组统计
     val resultDataSet: DataSet[(String,Int)] = inputDataSet
