@@ -84,7 +84,7 @@ object TransformExec {
     // 4、合流 + 转换(coMap-合并流需要提供两个转换函数)
     // connect可以连接2个类型不同的流
     // union可以连接多个流 ，但是要求流的数据类型一致
-    val warningStream = hignTempStream.map(
+    val warningStream = highTempStream.map(
       //data => (data.id, data.temperature)
       new MyMapper()
     )
@@ -97,7 +97,7 @@ object TransformExec {
     )
 
     // union合并流
-    hignTempStream.union(lowTempStream).print()
+    highTempStream.union(lowTempStream).print()
 
     // Sink
     resultStream.print()
