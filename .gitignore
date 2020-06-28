@@ -9,3 +9,4 @@ target/
 todo
 .cache-main
 .cache-tests
+learn-spark/metastore_db/

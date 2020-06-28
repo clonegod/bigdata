@@ -24,7 +24,7 @@ object SparkWordCount {
   def wordCount1(sc: SparkContext) {
     // 参数path可以指向单一文件，也可以指向一个文件目录
     // RDD：更适合并行计算到数据模型
-    val result1 = sc.textFile("./data")
+    val result1 = sc.textFile("src/main/resources/data/wordcount/")
       .flatMap(_.split("\\s+"))
       .map(word => (word, 1))
       .reduceByKey(_ + _)
@@ -34,7 +34,7 @@ object SparkWordCount {
   }
 
   def wordCount2(sc: SparkContext) {
-    val result2 = sc.textFile("./data")
+    val result2 = sc.textFile("src/main/resources/data/wordcount/")
       .flatMap(_.split("\\s+"))
       .groupBy(word => word)
       .map({

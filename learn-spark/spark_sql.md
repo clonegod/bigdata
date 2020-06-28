@@ -1,5 +1,10 @@
+#### 比较 RDD 与 DataFrame
+DataFrame里面存放的是结构化数据的描述信息，DataFrame要有表头（表的描述信息）。描述表有哪些列，每列的名字，是否允许为空
 
-#### DataSet 与 DataFrame
+DateFrame是特殊的RDD（RDD+schema信息就变为了DataFrame）
+
+
+#### 比较 DataSet 与 DataFrame
 DataSet是spark1.6之后新推出的API，也是一个分布式数据集。
 与RDD相比，DataSet保存了更多的描述类信息，概念上等同于关系型数据库中的二维表。
 由于DataSet中保存了更多与数据相关的描述信息，使得spark可以在运行时基于DataSet提供更多性能上的优化。

@@ -10,13 +10,14 @@ object SparkSQLWriteToTarget {
         .appName("UDAFDemo").master("local[*]").getOrCreate();
 
     val jdbcOptions = Map(
-      "url"->"jdbc:mysql://localhost:3306/test?useSSL=false",
+      "url"->"jdbc:mysql://localhost:3306/test?useSSL=false", // mysql哪个库
       "driver" -> "com.mysql.jdbc.Driver",
-      "dbtable" -> "person",
+      "dbtable" -> "person", // mysql哪个表
       "user" -> "root",
       "password" -> "123456"
     )
 
+    // 从mysql加载数据
     var persons = session.read.format("jdbc").options(jdbcOptions).load()
 
     persons.printSchema()

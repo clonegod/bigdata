@@ -21,7 +21,7 @@ object SparkSQLReadFromSource {
     import session.implicits._
 
     // 读取json格式的数据源
-    val dataFrame = session.read.json("data/person.json")
+    val dataFrame = session.read.json("src/main/resources/data/person.json")
 
     // 过滤
     val result = dataFrame.where($"age" > 20)
@@ -35,7 +35,7 @@ object SparkSQLReadFromSource {
     import session.implicits._
 
     // 读取csv格式的数据源
-    val dataFrame = session.read.csv("data/person.csv")
+    val dataFrame = session.read.csv("src/main/resources/data/person.csv")
                         .toDF("id", "name", "age");
 
     // 过滤

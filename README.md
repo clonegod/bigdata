@@ -1,11 +1,16 @@
 # bigdata learning
 
 ```
-canal
-kafka
-flink
-airflow
 hadoop/cdh-hadoop
 hive
+
+polardb -> canal -> kafka -> flink -> hdfs
+
+airflow
 spark-sql
+
+presto
+
+sqoop
+
 ```

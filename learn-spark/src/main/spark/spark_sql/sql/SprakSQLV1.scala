@@ -24,7 +24,7 @@ object SparkSQLV1 {
 
     // 先有普通的RDD，然后再关连上schema，进而转换成DataFrame
 
-    val lines: RDD[String] = sc.textFile("hdfs://localhost:8020/testdata/person.txt")
+    val lines: RDD[String] = sc.textFile("hdfs://localhost:8020/user/hive/warehouse/test.db/t_person/person.txt")
 
     // useDefinedClass(sqlContext, lines)
 

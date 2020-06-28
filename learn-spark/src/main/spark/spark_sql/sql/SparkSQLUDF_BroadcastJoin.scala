@@ -19,7 +19,7 @@ object SparkSQLUDF_BroadcastJoin {
       .getOrCreate();
 
     // 1、从HDFS读取IP规则
-    val ipsDataset = session.read.textFile("data/ips.txt")
+    val ipsDataset = session.read.textFile("src/main/resources/data/ips.txt")
     import session.implicits._
     // map操作相当于dataset上的RDD操作，需要引入隐式转化
     // 整理IP规则为结构化数据
@@ -35,7 +35,7 @@ object SparkSQLUDF_BroadcastJoin {
     val broadcastRef = session.sparkContext.broadcast(ipRuleInDriverSide)
 
     // 2、从HDFS读取access_log
-    val accessLogDataset = session.read.textFile("data/access_log.txt")
+    val accessLogDataset = session.read.textFile("src/main/resources/data/access_log.txt")
     // 整理access_log规则为结构化数据
     val accessLogDataFrame = accessLogDataset
       .map(line => {

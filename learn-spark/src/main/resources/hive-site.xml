@@ -1,0 +1,39 @@
+<configuration>
+   <property>
+      <name>javax.jdo.option.ConnectionURL</name>
+      <value>jdbc:mysql://localhost/metastore?characterEncoding=UTF-8&amp;createDatabaseIfNotExist=true&amp;useSSL=false</value>
+      <description>metadata is stored in a MySQL server</description>
+   </property>
+   <property>
+      <name>javax.jdo.option.ConnectionDriverName</name>
+      <value>com.mysql.jdbc.Driver</value>
+      <description>MySQL JDBC driver class</description>
+   </property>
+   <property>
+      <name>javax.jdo.option.ConnectionUserName</name>
+      <value>root</value>
+      <description>user name for connecting to mysql server</description>
+   </property>
+   <property>
+      <name>javax.jdo.option.ConnectionPassword</name>
+      <value>123456</value>
+      <description>password for connecting to mysql server</description>
+   </property>
+
+   <!-- 配置default数据库在hdfs上的位置 -->
+   <property>
+      <name>hive.metastore.warehouse.dir</name>
+      <value>/user/hive/warehouse</value>
+      <description>location of default database for the warehouse</description>
+   </property>
+
+   <!-- 命令行中显示查询当前所在数据库，已经结果表的列名 -->
+   <property>
+      <name>hive.cli.print.current.db</name>
+      <value>true</value>
+   </property>
+   <property>
+      <name>hive.cli.print.header</name>
+      <value>true</value>
+   </property>
+</configuration>
