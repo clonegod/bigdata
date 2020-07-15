@@ -10,6 +10,8 @@ import org.apache.flink.streaming.api.scala.{DataStream, StreamExecutionEnvironm
  */
 object WordCountStream {
   def main(args: Array[String]): Unit = {
+    /** 实时计算 - DataStream */
+
     // 创建流处理执行环境
     val env = StreamExecutionEnvironment.getExecutionEnvironment
 
@@ -22,11 +24,14 @@ object WordCountStream {
     val host = params.get("host") // localhost
     val port = params.getInt("port") // 7777
 
-    // 接受的数据源是一个流
+    // 第1步：
+    // [Source] 接受的数据源是一个流
     // 命令行启动nc发送实时消息，提供流数据：nc 7777 -lk
     val inputDataStream: DataStream[String] =
           env.socketTextStream(host, port)
 
+    // 第2步：
+    // [Transform] 对接收到的流中的数据进行转换处理
     import org.apache.flink.api.scala._
     val resultDataStream = inputDataStream
       .flatMap(_.split("\\s+"))
@@ -35,6 +40,8 @@ object WordCountStream {
       .keyBy(0) // 按元组的第一个元素分组
       .sum(1) // 对元组的第二个元素进行sum
 
+    // 第3步：
+    // [Sink] 将Transform之后的结果进行输出（控制台、Kafka、mysql、redis、es）
     // 输出结果设置为1个线程执行，就不会输出线程号了
     resultDataStream.print().setParallelism(1)
 

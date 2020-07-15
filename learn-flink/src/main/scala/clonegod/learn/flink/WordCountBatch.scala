@@ -1,12 +1,15 @@
 package clonegod.learn.flink
 
 import org.apache.flink.api.scala.{DataSet, ExecutionEnvironment}
+import org.apache.flink.core.fs.FileSystem
 // 隐式转换-TypeInformation
 import org.apache.flink.api.scala._
 
 object WordCountBatch {
   def main(args: Array[String]): Unit = {
     println("app start...")
+
+    /** 离线计算 - DataSet */
 
     // 创建一个批处理的执行上下文
     val env = ExecutionEnvironment.getExecutionEnvironment
@@ -26,5 +29,10 @@ object WordCountBatch {
     // 输出结果
     resultDataSet.print()
 
+    resultDataSet
+      .writeAsText("/Users/huangqihang/workspace_bigdata/learn-flink/target/wordcount_out", FileSystem.WriteMode.OVERWRITE)
+      .setParallelism(1)
+
+    env.execute("WordCountBatch")
   }
 }
