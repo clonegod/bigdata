@@ -74,6 +74,13 @@ examples/jars/spark-examples_2.11-2.3.4.jar 10
 提交任务的时候可以指定多个master，防止某个master连接不上：
 --master spark://master1:7077,master2:7077
 
+
+> 测试一个自己的jar包
+bin/spark-submit \
+--master local \
+--class spark_sql.source.HiveOnSpark \
+/Users/huangqihang/workspace_bigdata/learn-spark/target/learn-spark-1.0-SNAPSHOT-jar-with-dependencies.jar
+
 ```
 
 
@@ -83,8 +90,6 @@ examples/jars/spark-examples_2.11-2.3.4.jar 10
 examples/src/main/python/pi.py
 
 # 提交python版本的pi计算任务
-./bin/spark-submit \
---master local \ 
-./examples/src/main/python/pi.py 10
+./bin/spark-submit --master local ./examples/src/main/python/pi.py 10
 
 ```
