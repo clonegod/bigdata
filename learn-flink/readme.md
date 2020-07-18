@@ -45,14 +45,6 @@
 ```
 
 
-#### Flink 重启策略
-```
-1、flink开启checkpoint功能，同时就开启了重启策略。默认是不重启的。
-2、flink的重启策略可以配置成启动固定次数且每次延迟指定时间启动
-3、flink任务出现异常后，会根据配置的重启策略自动重启。将原来的subtask释放，重新生成subtask并调度到TaskManager的slot中执行。
-4、flink任务重启后，重新生成subtask被调度到TaskManager中，会从StageBackend中恢复上一次checkpoint的状态。
-```
-
 #### Flink 的时间
 ```
 1、EventTime 数据产生时的时间
@@ -85,5 +77,17 @@
     当这个非活跃周期产生，那么当前的session窗口就会关闭。后续产生的数据将被分配到下一个session窗口中。
 ```
 
+#### Flink 重启策略
+```
+1、flink开启checkpoint功能，同时就开启了重启策略。默认是不重启的。
+2、flink的重启策略可以配置成启动固定次数且每次延迟指定时间启动
+3、flink任务出现异常后，会根据配置的重启策略自动重启。将原来的subtask释放，重新生成subtask并调度到TaskManager的slot中执行。
+4、flink任务重启后，重新生成subtask被调度到TaskManager中，会从StageBackend中恢复上一次checkpoint的状态。
+```
 
+
+#### Flink CheckPoint
+
+
+#### Flink Exactly-Once
 

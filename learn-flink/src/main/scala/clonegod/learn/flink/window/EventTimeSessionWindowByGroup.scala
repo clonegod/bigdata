@@ -50,6 +50,6 @@ object EventTimeSessionWindowByGroup {
 
     output.print()
 
-    env.execute("CountWindowByGroup")
+    env.execute("EventTimeSessionWindowByGroup")
   }
 }

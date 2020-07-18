@@ -39,6 +39,6 @@ object ProcessingTimeSessionWindowByGroup {
 
     output.print()
 
-    env.execute("CountWindowByGroup")
+    env.execute("ProcessingTimeSessionWindowByGroup")
   }
 }
