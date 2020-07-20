@@ -41,7 +41,7 @@ object SinkToElasticsearch {
   // 1、定义连接es的地址
   def getEsHosts() = {
     // 注意List类型：java.util.List
-    val hosts = new util.ArrayList[HttpHost]()
+    val hosts = new java.util.ArrayList[HttpHost]()
     hosts.add(new HttpHost("localhost", 9200))
     hosts
   }
@@ -53,7 +53,7 @@ object SinkToElasticsearch {
         // 定义数据对象的哪些内容写入es
         // 写入es的数据类型可以是json或者Map
         // 注意Map类型： java.util.Map
-        val data = new util.HashMap[String,String]()
+        val data = new java.util.HashMap[String,String]()
         data.put("sensor_id", t.id)
         data.put("temperature", t.temperature.toString)
         data.put("timestamp", t.timestamp.toString)

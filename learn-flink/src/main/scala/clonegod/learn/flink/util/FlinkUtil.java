@@ -1,8 +1,7 @@
-package clonegod.learn.flink.richmapper;
+package clonegod.learn.flink.util;
 
 import org.apache.flink.api.common.serialization.SimpleStringSchema;
 import org.apache.flink.streaming.api.datastream.DataStream;
-import org.apache.flink.streaming.api.datastream.DataStreamSource;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumer;
 
@@ -16,6 +15,9 @@ public class FlinkUtil {
     public static DataStream<String> createKafkaSource(String serverUrl, List<String> topics, String groupId) {
         Properties props = getKafkaProperties(serverUrl, groupId);
         FlinkKafkaConsumer<String> kafkaConsumer = new FlinkKafkaConsumer<>(topics, new SimpleStringSchema(), props);
+        // Checkpoint 保存成功之后，才向kafka提交消息偏移量
+        kafkaConsumer.setCommitOffsetsOnCheckpoints(true);
+
         return env.addSource(kafkaConsumer);
     }
 

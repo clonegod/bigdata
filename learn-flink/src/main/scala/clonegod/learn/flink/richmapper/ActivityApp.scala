@@ -2,6 +2,7 @@ package clonegod.learn.flink.richmapper
 
 import java.sql.{Connection, DriverManager, PreparedStatement}
 
+import clonegod.learn.flink.util.FlinkUtil
 import org.apache.commons.io.IOUtils
 import org.apache.flink.api.common.functions.RichMapFunction
 import org.apache.flink.configuration.Configuration
